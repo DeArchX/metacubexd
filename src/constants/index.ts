@@ -112,16 +112,12 @@ export enum LANG {
 }
 
 export enum CONNECTIONS_TABLE_ACCESSOR_KEY {
-  Details = 'details',
-  Close = 'close',
   ID = 'ID',
-  Type = 'type',
-  Process = 'process',
   Host = 'host',
-  SniffHost = 'sniffHost',
-  Rule = 'rules',
-  Chains = 'chains',
   DlSpeed = 'dlSpeed',
+  Chains = 'chains',
+  Type = 'type',
+  Rule = 'rules',
   ULSpeed = 'ulSpeed',
   Download = 'dl',
   Upload = 'ul',
@@ -130,6 +126,10 @@ export enum CONNECTIONS_TABLE_ACCESSOR_KEY {
   SourcePort = 'sourcePort',
   Destination = 'destination',
   InboundUser = 'inboundUser',
+  Process = 'process',
+  SniffHost = 'sniffHost',
+  Close = 'close',
+  Details = 'details',
 }
 
 export const CONNECTIONS_TABLE_MAX_CLOSED_ROWS = 200

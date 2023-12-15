@@ -19,15 +19,15 @@ export const ProxyNodeCard = (props: {
       ? proxyNode()?.xudp
         ? 'xudp'
         : proxyNode()?.udp
-        ? 'udp'
-        : null
+          ? 'udp'
+          : null
       : null
 
   return (
     <div
       class={twMerge(
-        'card card-bordered tooltip-bottom flex flex-col justify-between gap-1 border-neutral-focus bg-neutral p-2 text-neutral-content',
-        isSelected && 'border-primary bg-primary-content text-primary',
+        'border-neutral-focus card card-bordered tooltip-bottom flex flex-col justify-between gap-1 bg-neutral p-2 text-neutral-content',
+        isSelected && 'border-primary text-primary',
         onClick && 'cursor-pointer',
       )}
       onClick={onClick}

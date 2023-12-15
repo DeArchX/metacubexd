@@ -341,7 +341,7 @@ export default () => {
                 <button
                   class={twMerge(
                     activeTab() === tab().type && 'tab-active',
-                    'tab tab-sm gap-2 sm:tab-md',
+                    'tab-sm tab gap-2',
                   )}
                   onClick={() => setActiveTab(tab().type)}
                 >
@@ -353,7 +353,7 @@ export default () => {
           </div>
 
           <select
-            class="select select-bordered select-primary select-sm w-full max-w-full flex-1 sm:select-md"
+            class="select select-bordered select-primary select-sm w-full max-w-full flex-1"
             onChange={(e) => setSourceIPFilter(e.target.value)}
           >
             <option value="">{t('all')}</option>
@@ -374,22 +374,22 @@ export default () => {
           </select>
         </div>
 
-        <div class="join flex flex-1 items-center md:flex-1">
+        <div class="flex flex-1 items-center">
           <input
             type="search"
-            class="input join-item input-primary input-sm min-w-0 flex-1 sm:input-md"
+            class="input input-primary input-sm min-w-0 flex-1"
             placeholder={t('search')}
             onInput={(e) => setGlobalFilter(e.target.value)}
           />
 
           <Button
-            class="join-item btn-sm sm:btn-md"
+            class="btn-circle btn-sm"
             onClick={() => setPaused((paused) => !paused)}
             icon={paused() ? <IconPlayerPlay /> : <IconPlayerPause />}
           />
 
           <Button
-            class="join-item btn-sm sm:btn-md"
+            class="btn-circle btn-sm"
             onClick={() => {
               if (table.getState().globalFilter) {
                 table
@@ -403,7 +403,7 @@ export default () => {
           />
 
           <Button
-            class="btn join-item btn-sm sm:btn-md"
+            class="btn-circle btn-sm"
             onClick={() => connectionsSettingsModalRef?.showModal()}
             icon={<IconSettings />}
           />

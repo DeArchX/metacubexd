@@ -123,7 +123,7 @@ export default () => {
               <button
                 class={twMerge(
                   activeTab() === tab.type && 'tab-active',
-                  'tab tab-sm gap-2 px-2 md:tab-md',
+                  'tab-sm tab gap-2 px-2',
                 )}
                 onClick={() => setActiveTab(tab.type)}
               >
@@ -151,7 +151,7 @@ export default () => {
       </div>
 
       <input
-        class="input input-bordered input-primary"
+        class="input input-bordered input-primary input-sm"
         placeholder={t('search')}
         value={globalFilter()}
         onInput={(e) => setGlobalFilter(e.currentTarget.value)}
