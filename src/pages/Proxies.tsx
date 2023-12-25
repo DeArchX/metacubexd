@@ -8,6 +8,7 @@ import { twMerge } from 'tailwind-merge'
 import {
   Button,
   Collapse,
+  Latency,
   ProxiesSettingsModal,
   ProxyNodeCard,
   ProxyNodePreview,
@@ -169,6 +170,7 @@ export default () => {
                         <div class="badge badge-sm">
                           {proxyGroup.all?.length}
                         </div>
+                        <Latency name={proxyGroup.now}></Latency>
                       </div>
 
                       <Button
