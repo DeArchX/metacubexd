@@ -16,11 +16,9 @@ export const ProxyNodeCard = (props: {
   const proxyNode = createMemo(() => proxyNodeMap()[proxyName])
   const specialType = () =>
     filterSpecialProxyType(proxyNode()?.type)
-      ? proxyNode()?.xudp
-        ? 'xudp'
-        : proxyNode()?.udp
-          ? 'udp'
-          : null
+      ? proxyNode()?.xudp || proxyNode()?.udp
+        ? 'udp'
+        : null
       : null
 
   return (
