@@ -49,7 +49,7 @@ export const [urlForIPv6SupportTest, setUrlIPv6SupportTest] = makePersisted(
 )
 
 export const [autoCloseConns, setAutoCloseConns] = makePersisted(
-  createSignal(false),
+  createSignal(true),
   { name: 'autoCloseConns', storage: localStorage },
 )
 export const [useTwemoji, setUseTwemoji] = makePersisted(createSignal(true), {
