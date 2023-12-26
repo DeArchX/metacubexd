@@ -392,9 +392,9 @@ export default () => {
             class="btn-circle btn-sm"
             onClick={() => {
               if (table.getState().globalFilter) {
-                table
-                  .getFilteredRowModel()
-                  .rows.forEach(({ id }) => closeSingleConnectionAPI(id))
+                table.getFilteredRowModel().rows.forEach(({ original }) => {
+                  closeSingleConnectionAPI(original.id)
+                })
               } else {
                 closeAllConnectionsAPI()
               }
