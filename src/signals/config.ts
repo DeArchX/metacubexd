@@ -5,7 +5,6 @@ import {
   CONNECTIONS_TABLE_INITIAL_COLUMN_VISIBILITY,
   DEFAULT_LOGS_TABLE_MAX_ROWS,
   LATENCY_QUALITY_MAP_HTTP,
-  LATENCY_QUALITY_MAP_HTTPS,
   LOG_LEVEL,
   PROXIES_ORDERING_TYPE,
   PROXIES_PREVIEW_TYPE,
@@ -147,5 +146,4 @@ export const [latencyTestTimeoutDuration, setLatencyTestTimeoutDuration] =
 export const isLatencyTestByHttps = () =>
   urlForLatencyTest().startsWith('https')
 
-export const latencyQualityMap = () =>
-  isLatencyTestByHttps() ? LATENCY_QUALITY_MAP_HTTPS : LATENCY_QUALITY_MAP_HTTP
+export const latencyQualityMap = () => LATENCY_QUALITY_MAP_HTTP
