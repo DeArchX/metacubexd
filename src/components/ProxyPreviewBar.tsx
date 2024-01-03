@@ -1,5 +1,5 @@
 import { createMemo } from 'solid-js'
-import { Latency } from '~/components'
+// import { Latency } from '~/components'
 import { latencyQualityMap, useProxies } from '~/signals'
 
 export const ProxyPreviewBar = (props: {
@@ -41,7 +41,7 @@ export const ProxyPreviewBar = (props: {
   )
 
   return (
-    <div class="flex items-center gap-2 py-2">
+    <div class="flex items-center gap-2 py-1">
       <div class="my-2 flex flex-1 items-center justify-center overflow-hidden rounded-2xl [&>*]:h-2">
         <div
           class="bg-success"
@@ -68,8 +68,6 @@ export const ProxyPreviewBar = (props: {
           }}
         />
       </div>
-
-      <Latency name={props.now} />
     </div>
   )
 }

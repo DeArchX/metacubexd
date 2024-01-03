@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 import { twMerge } from 'tailwind-merge'
-import { Latency } from '~/components'
+// import { Latency } from '~/components'
 import { latencyQualityMap, useProxies } from '~/signals'
 
 const LatencyDots = (props: {
@@ -65,8 +65,6 @@ export const ProxyPreviewDots = (props: {
           }}
         </For>
       </div>
-
-      <Latency name={props.now} />
     </div>
   )
 }

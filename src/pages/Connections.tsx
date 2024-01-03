@@ -374,7 +374,7 @@ export default () => {
           </select>
         </div>
 
-        <div class="flex flex-1 items-center">
+        <div class="flex flex-1 items-center gap-2">
           <input
             type="search"
             class="input input-primary input-sm min-w-0 flex-1"
