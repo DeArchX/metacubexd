@@ -143,7 +143,7 @@ export default () => {
         </div>
       </div>
 
-      <div class="flex-1 overflow-y-auto">
+      <div class="flex-1 overflow-y-auto pb-2">
         <Show when={activeTab() === ActiveTab.proxies}>
           <RenderInTwoColumns>
             <For each={proxies()}>
