@@ -54,7 +54,7 @@ export const App = () => {
       >
         <Header />
 
-        <div class="flex-1 overflow-y-auto p-2 sm:p-4">
+        <div class="flex-1 overflow-y-auto p-2">
           <div class="pb-8">
             <Routes>
               <Show when={endpoint()}>

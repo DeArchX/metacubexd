@@ -21,11 +21,11 @@
 }
 
 ::-webkit-scrollbar:vertical {
-  width: 6px;
+  width: 0px;
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: 6px;
+  height: 0px;
 }
 
 @media (width >= 640px) {
