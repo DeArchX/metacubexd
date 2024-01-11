@@ -81,8 +81,8 @@ export const DEFAULT_CHART_OPTIONS: ApexOptions = {
 
 export enum LATENCY_QUALITY_MAP_HTTP {
   NOT_CONNECTED = -1,
-  MEDIUM = 200,
-  HIGH = 500,
+  MEDIUM = 400,
+  HIGH = 800,
 }
 
 export enum LATENCY_QUALITY_MAP_HTTPS {
