@@ -88,8 +88,10 @@ export default () => {
     useConnections()
 
   const [globalFilter, setGlobalFilter] = createSignal('')
-  const [directFilter, setDirectFilter] = createSignal(true)
-
+  const [directFilter, setDirectFilter] = makePersisted(createSignal(true), {
+    name: 'directFilter',
+    storage: localStorage,
+  })
   const [selectedConnectionID, setSelectedConnectionID] = createSignal<string>()
 
   const columns: ColumnDef<Connection>[] = [
