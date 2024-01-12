@@ -114,10 +114,10 @@ export enum LANG {
 export enum CONNECTIONS_TABLE_ACCESSOR_KEY {
   ID = 'ID',
   Host = 'host',
-  DlSpeed = 'dlSpeed',
   Chains = 'chains',
   Type = 'type',
   Rule = 'rules',
+  DlSpeed = 'dlSpeed',
   ULSpeed = 'ulSpeed',
   Download = 'dl',
   Upload = 'ul',
