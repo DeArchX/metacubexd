@@ -88,6 +88,7 @@ export default () => {
     useConnections()
 
   const [globalFilter, setGlobalFilter] = createSignal('')
+  const [directFilter, setDirectFilter] = createSignal(true)
 
   const [selectedConnectionID, setSelectedConnectionID] = createSignal<string>()
 
@@ -282,9 +283,17 @@ export default () => {
       },
     },
     get data() {
-      return activeTab() === ActiveTab.activeConnections
-        ? activeConnections()
-        : closedConnections()
+      const conns =
+        activeTab() === ActiveTab.activeConnections
+          ? activeConnections()
+          : closedConnections()
+
+      if (directFilter()) {
+        return conns.filter(
+          (i) => !(i.chains.includes('Direct') || i.chains.includes('DNS')),
+        )
+      }
+      return conns
     },
     sortDescFirst: true,
     enableHiding: true,
@@ -380,6 +389,13 @@ export default () => {
             class="input input-primary input-sm min-w-0 flex-1"
             placeholder={t('search')}
             onInput={(e) => setGlobalFilter(e.target.value)}
+          />
+
+          <input
+            class="toggle"
+            type="checkbox"
+            checked={directFilter()}
+            onChange={(e) => setDirectFilter(e.target.checked)}
           />
 
           <Button
