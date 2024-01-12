@@ -52,7 +52,6 @@ export default {
   urlForIPv6SupportTest: '测试 IPv6 支持链接',
   urlForLatencyTest: '测速链接',
   autoCloseConns: '自动断开连接',
-  useTwemoji: '使用 Twemoji Mozilla 字体',
   autoSwitchTheme: '自动切换主题',
   favDayTheme: '浅色主题偏好',
   favNightTheme: '深色主题偏好',

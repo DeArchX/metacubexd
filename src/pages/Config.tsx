@@ -41,9 +41,7 @@ import {
   setFavDayTheme,
   setFavNightTheme,
   setSelectedEndpoint,
-  setUseTwemoji,
   useRequest,
-  useTwemoji,
 } from '~/signals'
 import type { DNSQuery } from '~/types'
 
@@ -401,17 +399,6 @@ const ConfigForXd = () => {
   return (
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div class="flex flex-col gap-2">
-        <div class="flex flex-col items-center">
-          <ConfigTitle>{t('useTwemoji')}</ConfigTitle>
-
-          <input
-            type="checkbox"
-            class="toggle"
-            checked={useTwemoji()}
-            onChange={(e) => setUseTwemoji(e.target.checked)}
-          />
-        </div>
-
         <div class="flex flex-col">
           <ConfigTitle>{t('switchLanguage')}</ConfigTitle>
 

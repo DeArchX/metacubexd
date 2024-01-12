@@ -5,9 +5,8 @@
 @tailwind utilities;
 @tailwind variants;
 
-@font-face {
-  font-family: 'Twemoji Mozilla';
-  src: url('assets/Twemoji.Mozilla.ttf') format('truetype');
+* {
+  font-family: 'system-ui';
 }
 
 :root {

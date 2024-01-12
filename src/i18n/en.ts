@@ -50,7 +50,6 @@ export default {
   urlForIPv6SupportTest: 'URL for IPv6 support test',
   urlForLatencyTest: 'URL for latency test',
   autoCloseConns: 'Automatically Close connections',
-  useTwemoji: 'Use Twemoji Mozilla Font',
   autoSwitchTheme: 'Automatically switch theme',
   favDayTheme: 'Favorite light theme',
   favNightTheme: 'Favorite dark theme',

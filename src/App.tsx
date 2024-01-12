@@ -15,7 +15,6 @@ import {
   favNightTheme,
   setCurTheme,
   setLatestConnectionMsg,
-  useTwemoji,
   useWsRequest,
 } from '~/signals'
 
@@ -48,7 +47,6 @@ export const App = () => {
       <div
         class={twMerge(
           'relative flex h-screen flex-col overscroll-y-none subpixel-antialiased',
-          useTwemoji() ? 'font-twemoji' : 'font-no-twemoji',
         )}
         data-theme={curTheme()}
       >
