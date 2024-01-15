@@ -2,20 +2,17 @@ import { createForm } from '@felte/solid'
 import { validator } from '@felte/validator-zod'
 import { useNavigate } from '@solidjs/router'
 import {
-  Accessor,
   Component,
   For,
   Show,
   createEffect,
   createResource,
   createSignal,
-  onMount,
 } from 'solid-js'
 import { toast } from 'solid-toast'
 import { z } from 'zod'
 import {
   fetchBackendConfigAPI,
-  fetchBackendVersionAPI,
   flushFakeIPDataAPI,
   flushingFakeIPData,
   isUpdateAvailableAPI,
@@ -31,7 +28,7 @@ import {
 } from '~/apis'
 import { Button, ConfigTitle } from '~/components'
 import { LANG, MODE_OPTIONS, ROUTES, themes } from '~/constants'
-import { isSingBox } from '~/helpers'
+import { isSingBox } from '~/helpers/global'
 import { locale, setLocale, useI18n } from '~/i18n'
 import {
   autoSwitchTheme,
@@ -43,8 +40,8 @@ import {
   setSelectedEndpoint,
   useRequest,
 } from '~/signals'
+import { backendVersion } from '~/signals/global'
 import type { DNSQuery } from '~/types'
-
 const dnsQueryFormSchema = z.object({
   name: z.string(),
   type: z.string(),
@@ -114,9 +111,7 @@ const configFormSchema = z.object({
   'mixed-port': z.number(),
 })
 
-const ConfigForm: Component<{ backendVersion: Accessor<string> }> = ({
-  backendVersion,
-}) => {
+const ConfigForm: Component = () => {
   const [t] = useI18n()
   const navigate = useNavigate()
 
@@ -198,7 +193,7 @@ const ConfigForm: Component<{ backendVersion: Accessor<string> }> = ({
         <option value={MODE_OPTIONS.Direct}>{t('direct')}</option>
       </select>
 
-      <Show when={!isSingBox(backendVersion())}>
+      <Show when={!isSingBox()}>
         <form class="grid grid-cols-3 gap-2 sm:grid-cols-5" use:form={form}>
           <For each={portList}>
             {(item) => (
@@ -350,7 +345,7 @@ const ConfigForm: Component<{ backendVersion: Accessor<string> }> = ({
           {t('flushFakeIP')}
         </Button>
 
-        <Show when={!isSingBox(backendVersion())}>
+        <Show when={!isSingBox()}>
           <Button
             class="btn-error"
             loading={upgradingBackend()}
@@ -469,9 +464,7 @@ const ConfigForXd = () => {
   )
 }
 
-const Versions: Component<{ backendVersion: Accessor<string> }> = ({
-  backendVersion,
-}) => {
+const Versions = () => {
   const [isUpdateAvailable, setIsUpdateAvailable] = createSignal(false)
 
   createEffect(async () => {
@@ -503,15 +496,9 @@ const Versions: Component<{ backendVersion: Accessor<string> }> = ({
 export default () => {
   const [t] = useI18n()
 
-  const [backendVersion, setBackendVersion] = createSignal('')
-
-  onMount(async () => {
-    setBackendVersion(await fetchBackendVersionAPI())
-  })
-
   return (
     <div class="mx-auto flex max-w-screen-md flex-col gap-4">
-      <Show when={!isSingBox(backendVersion())}>
+      <Show when={!isSingBox()}>
         <ConfigTitle withDivider>{t('dnsQuery')}</ConfigTitle>
 
         <DNSQueryForm />
@@ -519,7 +506,7 @@ export default () => {
 
       <ConfigTitle withDivider>{t('coreConfig')}</ConfigTitle>
 
-      <ConfigForm backendVersion={backendVersion} />
+      <ConfigForm />
 
       <ConfigTitle withDivider>{t('xdConfig')}</ConfigTitle>
 
@@ -527,7 +514,7 @@ export default () => {
 
       <ConfigTitle withDivider>{t('version')}</ConfigTitle>
 
-      <Versions backendVersion={backendVersion} />
+      <Versions />
     </div>
   )
 }

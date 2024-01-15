@@ -2,7 +2,9 @@ import { createEventSignal } from '@solid-primitives/event-listener'
 import { makePersisted } from '@solid-primitives/storage'
 import { createReconnectingWS } from '@solid-primitives/websocket'
 import ky from 'ky'
-import { createMemo, createSignal } from 'solid-js'
+import { createEffect, createMemo, createSignal } from 'solid-js'
+import { fetchBackendVersionAPI } from '~/apis'
+import { setBackendVersion } from './global'
 
 export const [selectedEndpoint, setSelectedEndpoint] = makePersisted(
   createSignal(''),
@@ -44,6 +46,12 @@ export const useRequest = () => {
 
 export const endpoint = () =>
   endpointList().find(({ id }) => id === selectedEndpoint())
+
+createEffect(async () => {
+  if (selectedEndpoint()) {
+    setBackendVersion(await fetchBackendVersionAPI())
+  }
+})
 
 export const secret = () => endpoint()?.secret
 

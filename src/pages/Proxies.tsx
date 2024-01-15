@@ -17,6 +17,7 @@ import {
 } from '~/components'
 import {
   filterProxiesByAvailability,
+  isSingBox,
   sortProxiesByOrderingType,
 } from '~/helpers'
 import { useI18n } from '~/i18n'
@@ -58,6 +59,14 @@ export default () => {
 
   onMount(fetchProxies)
 
+  const renderProixes = createMemo(() => {
+    if (isSingBox()) {
+      return proxies().filter((proxy) => proxy.name !== 'GLOBAL')
+    }
+
+    return proxies()
+  })
+
   const onProxyGroupLatencyTestClick = async (
     e: MouseEvent,
     groupName: string,
@@ -90,7 +99,7 @@ export default () => {
     {
       type: ActiveTab.proxies,
       name: t('proxies'),
-      count: proxies().length,
+      count: renderProixes().length,
     },
     {
       type: ActiveTab.proxyProviders,
@@ -146,7 +155,7 @@ export default () => {
       <div class="flex-1 overflow-y-auto pb-2">
         <Show when={activeTab() === ActiveTab.proxies}>
           <RenderInTwoColumns>
-            <For each={proxies()}>
+            <For each={renderProixes()}>
               {(proxyGroup) => {
                 const sortedProxyNames = createMemo(() =>
                   filterProxiesByAvailability(

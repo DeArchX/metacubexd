@@ -1,8 +1,9 @@
-import { createSignal } from 'solid-js'
+import { createMemo, createSignal } from 'solid-js'
+import { backendVersion } from '~/signals'
 
-export const isSingBox = (version: string) => {
-  return version.includes('sing-box')
-}
+export const isSingBox = createMemo(() => {
+  return backendVersion().includes('sing-box')
+})
 
 export const transformEndpointURL = (url: string) =>
   /^https?/.test(url) ? url : `${window.location.protocol}//${url}`
