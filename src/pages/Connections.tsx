@@ -499,45 +499,53 @@ export default () => {
                             value && writeClipboard(value).catch(() => {})
                           }}
                         >
-                          {cell.getIsGrouped() ? (
-                            <button
-                              class={twMerge(
-                                row.getCanExpand()
-                                  ? 'cursor-pointer'
-                                  : 'cursor-normal',
-                                'flex items-center gap-2',
-                              )}
-                              onClick={row.getToggleExpandedHandler()}
-                            >
-                              <div>
-                                {row.getIsExpanded() ? (
-                                  <IconZoomOutFilled size={18} />
-                                ) : (
-                                  <IconZoomInFilled size={18} />
+                          <div
+                            class={twMerge(
+                              cell.column.id ===
+                                CONNECTIONS_TABLE_ACCESSOR_KEY.Rule &&
+                                'max-w-sm truncate',
+                            )}
+                          >
+                            {cell.getIsGrouped() ? (
+                              <button
+                                class={twMerge(
+                                  row.getCanExpand()
+                                    ? 'cursor-pointer'
+                                    : 'cursor-normal',
+                                  'flex items-center gap-2',
                                 )}
-                              </div>
+                                onClick={row.getToggleExpandedHandler()}
+                              >
+                                <div>
+                                  {row.getIsExpanded() ? (
+                                    <IconZoomOutFilled size={18} />
+                                  ) : (
+                                    <IconZoomInFilled size={18} />
+                                  )}
+                                </div>
 
-                              <div>
-                                {flexRender(
+                                <div>
+                                  {flexRender(
+                                    cell.column.columnDef.cell,
+                                    cell.getContext(),
+                                  )}
+                                </div>
+
+                                <div>({row.subRows.length})</div>
+                              </button>
+                            ) : cell.getIsAggregated() ? (
+                              flexRender(
+                                cell.column.columnDef.aggregatedCell ??
                                   cell.column.columnDef.cell,
-                                  cell.getContext(),
-                                )}
-                              </div>
-
-                              <div>({row.subRows.length})</div>
-                            </button>
-                          ) : cell.getIsAggregated() ? (
-                            flexRender(
-                              cell.column.columnDef.aggregatedCell ??
+                                cell.getContext(),
+                              )
+                            ) : cell.getIsPlaceholder() ? null : (
+                              flexRender(
                                 cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )
-                          ) : cell.getIsPlaceholder() ? null : (
-                            flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )
-                          )}
+                                cell.getContext(),
+                              )
+                            )}
+                          </div>
                         </td>
                       )
                     }}
