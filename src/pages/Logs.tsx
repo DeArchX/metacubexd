@@ -1,5 +1,7 @@
 import { makePersisted } from '@solid-primitives/storage'
 import {
+  IconPlayerPause,
+  IconPlayerPlay,
   IconSettings,
   IconSortAscending,
   IconSortDescending,
@@ -46,13 +48,14 @@ export default () => {
 
   let seq = 1
   const [logs, setLogs] = createSignal<LogWithSeq[]>([])
+  const [paused, setPaused] = createSignal(false)
 
   const logsData = useWsRequest<Log>('logs', { level: logLevel() })
 
   createEffect(() => {
     const data = logsData()
 
-    if (!data) {
+    if (!data || paused()) {
       return
     }
 
@@ -132,16 +135,22 @@ export default () => {
 
   return (
     <div class="flex h-full flex-col gap-2">
-      <div class="join w-full">
+      <div class="flex w-full gap-2">
         <input
           type="search"
-          class="input join-item input-primary input-sm flex-1 flex-shrink-0 sm:input-md"
+          class="input input-primary input-sm flex-1 flex-shrink-0"
           placeholder={t('search')}
           onInput={(e) => setGlobalFilter(e.target.value)}
         />
 
         <Button
-          class="join-item btn-sm sm:btn-md"
+          class="btn-circle btn-sm"
+          onClick={() => setPaused((paused) => !paused)}
+          icon={paused() ? <IconPlayerPlay /> : <IconPlayerPause />}
+        />
+
+        <Button
+          class="btn-circle btn-sm"
           onClick={() => logsSettingsModalRef?.showModal()}
           icon={<IconSettings />}
         />

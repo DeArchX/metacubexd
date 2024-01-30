@@ -7,7 +7,7 @@ export const LogoText = () => (
       class="bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent"
       href={endpoint() ? '/' : '/setup'}
     >
-      metacubexd
+      YAXD
     </A>
   </div>
 )
