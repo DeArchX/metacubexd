@@ -43,7 +43,7 @@ const ThemeSwitcher = () => (
     <div class="drawer-side overflow-x-hidden">
       <label for="themes" class="drawer-overlay" />
 
-      <ul class="menu gap-2 rounded-l-box bg-base-300 p-2">
+      <ul class="menu h-full gap-2 rounded-l-box bg-base-300 p-2">
         <For each={themes}>
           {(theme) => (
             <li
