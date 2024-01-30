@@ -74,7 +74,7 @@ export const DEFAULT_CHART_OPTIONS: ApexOptions = {
   yaxis: {
     labels: {
       style: { colors: 'gray', fontSize: '13px' },
-      formatter: (val) => byteSize(val).toString(),
+      formatter: (val) => byteSize(val, { units: 'iec' }).toString(),
     },
   },
 }

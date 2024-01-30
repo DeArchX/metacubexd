@@ -194,7 +194,8 @@ export default () => {
       header: () => t('dlSpeed'),
       enableGrouping: false,
       accessorKey: CONNECTIONS_TABLE_ACCESSOR_KEY.DlSpeed,
-      accessorFn: (original) => `${byteSize(original.downloadSpeed)}/s`,
+      accessorFn: (original) =>
+        `${byteSize(original.downloadSpeed, { units: 'iec' })}/s`,
       sortingFn: (prev, next) =>
         prev.original.downloadSpeed - next.original.downloadSpeed,
     },
@@ -202,7 +203,8 @@ export default () => {
       header: () => t('ulSpeed'),
       enableGrouping: false,
       accessorKey: CONNECTIONS_TABLE_ACCESSOR_KEY.ULSpeed,
-      accessorFn: (original) => `${byteSize(original.uploadSpeed)}/s`,
+      accessorFn: (original) =>
+        `${byteSize(original.uploadSpeed, { units: 'iec' })}/s`,
       sortingFn: (prev, next) =>
         prev.original.uploadSpeed - next.original.uploadSpeed,
     },
@@ -210,7 +212,7 @@ export default () => {
       header: () => t('dl'),
       enableGrouping: false,
       accessorKey: CONNECTIONS_TABLE_ACCESSOR_KEY.Download,
-      accessorFn: (original) => byteSize(original.download),
+      accessorFn: (original) => byteSize(original.download, { units: 'iec' }),
       sortingFn: (prev, next) =>
         prev.original.download - next.original.download,
     },
@@ -218,7 +220,7 @@ export default () => {
       header: () => t('ul'),
       enableGrouping: false,
       accessorKey: CONNECTIONS_TABLE_ACCESSOR_KEY.Upload,
-      accessorFn: (original) => byteSize(original.upload),
+      accessorFn: (original) => byteSize(original.upload, { units: 'iec' }),
       sortingFn: (prev, next) => prev.original.upload - next.original.upload,
     },
     {
@@ -295,6 +297,7 @@ export default () => {
           (i) => !(i.chains.includes('Direct') || i.chains.includes('DNS')),
         )
       }
+
       return conns
     },
     sortDescFirst: true,
