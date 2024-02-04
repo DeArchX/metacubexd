@@ -16,7 +16,7 @@ export const RenderInTwoColumns: ParentComponent = (props) => {
   )
 
   return (
-    <div class="flex flex-col gap-2 sm:flex-row">
+    <div class="flex flex-col gap-2 lg:flex-row">
       <Show when={showTwoColumns()} fallback={props.children}>
         <div class="flex flex-1 flex-col gap-2">{leftColumns()}</div>
         <div class="flex flex-1 flex-col gap-2">{rightColumns()}</div>
