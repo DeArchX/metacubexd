@@ -41,7 +41,7 @@ export const Collapse: ParentComponent<Props> = (props) => {
       <div
         class={twMerge(
           getCollapseContentClassName(),
-          'collapse-content grid grid-cols-2 gap-2 transition-opacity duration-1000 lg:grid-cols-2 xl:grid-cols-3 min-[1800px]:grid-cols-4',
+          'collapse-content grid grid-cols-2 gap-2 transition-opacity duration-1000 lg:grid-cols-2 xl:grid-cols-3 min-[1700px]:grid-cols-4',
         )}
       >
         <Show when={props.isOpen}>{children(() => props.children)()}</Show>
