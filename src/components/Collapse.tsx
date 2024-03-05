@@ -45,7 +45,7 @@ export const Collapse: ParentComponent<Props> = (props) => {
           'collapse-content grid grid-cols-2 gap-2 transition-opacity duration-1000',
           renderProxiesInTwoColumns()
             ? 'sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 min-[1700px]:grid-cols-4'
-            : 'sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 min-[1700px]:grid-cols-6',
+            : 'sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 min-[1700px]:grid-cols-8',
         )}
       >
         <Show when={props.isOpen}>{children(() => props.children)()}</Show>
