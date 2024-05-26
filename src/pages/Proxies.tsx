@@ -203,7 +203,10 @@ export default () => {
 
                     <div class="text-sm text-slate-500">
                       {proxyGroup.type}{' '}
-                      {proxyGroup.now?.length > 0 && ` :: ${proxyGroup.now}`}
+                      <Show when={proxyGroup.now?.length > 0}>
+                        {':: '}
+                        <span class="text-primary">{proxyGroup.now}</span>
+                      </Show>
                     </div>
 
                     <Show when={!collapsedMap()[proxyGroup.name]}>
