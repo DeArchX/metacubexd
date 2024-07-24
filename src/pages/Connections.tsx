@@ -292,6 +292,8 @@ export default () => {
           ? activeConnections()
           : closedConnections()
 
+      conns.sort((a, b) => a.id.localeCompare(b.id))
+
       if (directFilter()) {
         return conns.filter(
           (i) => !(i.chains.includes('Direct') || i.chains.includes('DNS')),
